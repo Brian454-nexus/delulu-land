@@ -1,0 +1,2728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quinn & Luna's Delulu Realm</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #1a0b2e;
+        color: #d4c4ff;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+      .banner {
+        position: relative;
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
+          url("https://i.pinimg.com/736x/b0/f9/a3/b0f9a3b2e9f82a6d3d0d4d945cebbdc3.jpg");
+        background-size: cover;
+        background-position: center 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 5%;
+        background: rgba(0, 0, 0, 0.8);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid #ffdd57;
+        transition: transform 0.4s;
+      }
+      .logo:hover {
+        transform: rotate(360deg) scale(1.2);
+      }
+      .navbar ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .navbar ul li {
+        margin: 0 15px;
+      }
+      .navbar ul li a {
+        color: #ffdd57;
+        text-decoration: none;
+        font-family: "Cinzel", serif;
+        text-transform: uppercase;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+      .navbar ul li a:hover {
+        color: #a389ff;
+      }
+      .content {
+        text-align: center;
+        padding: 0 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .content h1 {
+        font-family: "Cinzel", serif;
+        font-size: clamp(40px, 10vw, 80px);
+        color: #ffdd57;
+        text-shadow: 0 0 20px #ffdd57;
+        animation: glow 2s infinite alternate;
+      }
+      .content p {
+        font-size: clamp(16px, 4vw, 20px);
+        margin: 20px 0;
+        color: #d4c4ff;
+      }
+      .button {
+        padding: 12px 30px;
+        margin: 8px;
+        background: transparent;
+        border: 2px solid #ffdd57;
+        color: #ffdd57;
+        border-radius: 30px;
+        font-family: "Cinzel", serif;
+        font-size: clamp(12px, 3vw, 16px);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .button:hover {
+        background: #ffdd57;
+        color: #1a0b2e;
+        box-shadow: 0 0 15px #ffdd57;
+      }
+      .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      section {
+        padding: 60px 5%;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        margin: 20px 0;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(163, 137, 255, 0.3);
+        overflow: hidden;
+      }
+      section h2 {
+        font-family: "Cinzel", serif;
+        font-size: clamp(24px, 6vw, 48px);
+        color: #ffdd57;
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px #ffdd57;
+      }
+      section p {
+        font-size: clamp(14px, 4vw, 18px);
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      #about {
+        background: linear-gradient(
+            rgba(26, 11, 46, 0.9),
+            rgba(26, 11, 46, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1606841731208-8f9f8c861e91?auto=format&fit=crop&w=1350&q=80");
+      }
+      #spells {
+        background: linear-gradient(
+            rgba(26, 11, 46, 0.9),
+            rgba(26, 11, 46, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=1350&q=80");
+      }
+      #tales {
+        background: linear-gradient(
+            rgba(26, 11, 46, 0.9),
+            rgba(26, 11, 46, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?auto=format&fit=crop&w=1350&q=80");
+      }
+      #quiz {
+        background: linear-gradient(
+            rgba(26, 11, 46, 0.9),
+            rgba(26, 11, 46, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=1350&q=80");
+      }
+      #raven {
+        background: linear-gradient(
+            rgba(26, 11, 46, 0.9),
+            rgba(26, 11, 46, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1538370965046-79c0d6907d47?auto=format&fit=crop&w=1350&q=80");
+      }
+      .card-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 15px;
+        width: clamp(250px, 45%, 300px);
+        transition: transform 0.3s, box-shadow 0.3s;
+        backdrop-filter: blur(5px);
+      }
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 20px rgba(163, 137, 255, 0.5);
+      }
+      .card h3 {
+        font-family: "Cinzel", serif;
+        color: #ffdd57;
+        margin-bottom: 10px;
+        font-size: clamp(16px, 4vw, 20px);
+      }
+      .spell-form,
+      .tale-form {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .spell-form h3,
+      .tale-form h3 {
+        font-family: "Cinzel", serif;
+        color: #ffdd57;
+        margin-bottom: 15px;
+        font-size: clamp(16px, 4vw, 20px);
+      }
+      input,
+      textarea {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #a389ff;
+        background: rgba(255, 255, 255, 0.1);
+        color: #d4c4ff;
+        width: clamp(200px, 80%, 300px);
+      }
+      textarea {
+        height: 100px;
+      }
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 10px #ffdd57;
+        }
+        100% {
+          text-shadow: 0 0 20px #ffdd57, 0 0 30px #a389ff;
+        }
+      }
+      .mist {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        background: radial-gradient(
+          circle,
+          rgba(163, 137, 255, 0.1) 1px,
+          transparent 1px
+        );
+        background-size: 60px 60px;
+        animation: swirl 10s infinite;
+      }
+      @keyframes swirl {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+      #quiz-container {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 20px rgba(163, 137, 255, 0.5);
+        position: relative;
+      }
+      #timer {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        background: rgba(163, 137, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: #ffdd57;
+        text-shadow: 0 0 5px #ffdd57;
+        transition: background 0.3s;
+      }
+      #timer.warning {
+        background: rgba(255, 59, 48, 0.5);
+      }
+      #character-comment {
+        font-size: clamp(14px, 4vw, 18px);
+        color: #a389ff;
+        margin-bottom: 15px;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+      }
+      #quiz-question {
+        font-size: clamp(18px, 5vw, 24px);
+        color: #ffdd57;
+        margin-bottom: 20px;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+      }
+      .quiz-option {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+        padding: 15px;
+        background: rgba(163, 137, 255, 0.2);
+        border: 2px solid #a389ff;
+        border-radius: 10px;
+        color: #d4c4ff;
+        font-size: clamp(14px, 4vw, 18px);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .quiz-option:hover {
+        background: rgba(163, 137, 255, 0.4);
+        border-color: #ffdd57;
+      }
+      .correct {
+        background: #34c759;
+        border-color: #34c759;
+        box-shadow: 0 0 15px #34c759;
+      }
+      .wrong {
+        background: #ff3b30;
+        border-color: #ff3b30;
+        box-shadow: 0 0 15px #ff3b30;
+      }
+      #leaderboard {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+        font-size: clamp(14px, 4vw, 18px);
+        color: #ffdd57;
+        text-shadow: 0 0 10px #ffdd57;
+      }
+      .leaderboard-item {
+        text-align: center;
+      }
+      .progress-bar {
+        width: 100px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        margin-top: 5px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: #ffdd57;
+        transition: width 0.5s ease;
+      }
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          padding: 10px 5%;
+        }
+        .navbar ul {
+          margin-top: 10px;
+        }
+        .content {
+          padding: 10px;
+        }
+        section {
+          padding: 40px 5%;
+        }
+        .button-group {
+          flex-direction: column;
+          gap: 5px;
+        }
+        #quiz-container {
+          padding: 15px;
+        }
+        #leaderboard {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .navbar ul li {
+          margin: 0 10px;
+        }
+        .button-group {
+          flex-wrap: nowrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mist"></div>
+    <div class="banner">
+      <div class="navbar">
+        <img
+          class="logo"
+          src="https://i.pinimg.com/736x/fc/cb/55/fccb554c48b7a15a7cc8f77393fcb5b9.jpg"
+          alt="logo"
+        />
+        <ul>
+          <li><a href="#home">Portal</a></li>
+          <li><a href="#about">Our Coven</a></li>
+          <li><a href="#spells">Spellbook</a></li>
+          <li><a href="#tales">Tales of Delulu</a></li>
+          <li><a href="#quiz">Mystic Quiz</a></li>
+          <li><a href="#raven">Send a Raven</a></li>
+        </ul>
+      </div>
+      <div class="content" id="home">
+        <h1>Quinn & Luna's Delulu Realm</h1>
+        <p>
+          Welcome, wanderer, to the mystical hideout of Quinn the Wizard and
+          Luna the Witch—where magic is real and reality is just a suggestion.
+        </p>
+        <div class="button-group">
+          <div>
+            <button class="button" onclick="location.href='#spells'">
+              Cast a Spell
+            </button>
+            <button class="button" onclick="location.href='#tales'">
+              Hear a Tale
+            </button>
+          </div>
+          <div>
+            <button class="button" onclick="changeMood('starry')">
+              Starry
+            </button>
+            <button class="button" onclick="changeMood('misty')">Misty</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="about">
+      <h2>Our Coven</h2>
+      <p>
+        We are Quinn and Luna, two souls bound by mischief and magic. I, Quinn,
+        wield the staff of whimsy, while Luna brews potions of wonder. Together,
+        we dance through a realm where stars whisper secrets and the moon hums
+        lullabies.
+      </p>
+    </section>
+
+    <section id="spells">
+      <h2>Spellbook</h2>
+      <div class="card-container">
+        <div class="card">
+          <h3>Quinn’s Glimmerdust</h3>
+          <p>
+            Sprinkle this on a dull day to summon sparkles and a random burst of
+            laughter.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Luna’s Moonmist</h3>
+          <p>
+            A brew that turns nightmares into dreams of flying through lavender
+            skies.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Delulu Charm</h3>
+          <p>Cast this together to make any absurd idea feel like destiny.</p>
+        </div>
+      </div>
+      <div class="spell-form">
+        <h3>Conjure a New Spell</h3>
+        <input type="text" id="spellName" placeholder="Spell Name" />
+        <textarea id="spellDesc" placeholder="What does it do?"></textarea>
+        <button onclick="addSpell()" class="button">Cast It!</button>
+      </div>
+    </section>
+
+    <section id="tales">
+      <h2>Tales of Delulu</h2>
+      <div class="card-container">
+        <div class="card">
+          <h3>The Midnight Cauldron</h3>
+          <p>
+            That time Luna turned my socks into frogs, and we chased them under
+            a full moon.
+          </p>
+        </div>
+        <div class="card">
+          <h3>The Wand Mishap</h3>
+          <p>When Quinn accidentally made the stars sing karaoke—loudly.</p>
+        </div>
+      </div>
+      <div class="tale-form">
+        <h3>Scribe a New Tale</h3>
+        <input type="text" id="taleTitle" placeholder="Tale Title" />
+        <textarea id="taleText" placeholder="What happened?"></textarea>
+        <button onclick="addTale()" class="button">Tell It!</button>
+      </div>
+    </section>
+
+    <section id="quiz">
+      <h2>Mystic Quiz</h2>
+      <p>
+        Face the infinite trials of Quinn and Luna—answer in 10 seconds, or the
+        mists claim your score!
+      </p>
+      <div id="quiz-container">
+        <div id="timer">10</div>
+        <div id="character-comment"></div>
+        <div id="quiz-question"></div>
+        <button class="quiz-option" data-choice="A"></button>
+        <button class="quiz-option" data-choice="B"></button>
+        <button class="quiz-option" data-choice="C"></button>
+        <div id="leaderboard">
+          <div class="leaderboard-item">
+            <span>Quinn’s Score: <span id="quinn-score">0</span></span>
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                id="quinn-progress"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+          <div class="leaderboard-item">
+            <span>Luna’s Score: <span id="luna-score">0</span></span>
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                id="luna-progress"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="raven">
+      <h2>Send a Raven</h2>
+      <p>
+        Whisper to us through the ether at
+        <a href="mailto:quinnluna@delulurealm.com" style="color: #a389ff"
+          >quinnluna@delulurealm.com</a
+        >, or toss a scroll into the wind—we’ll catch it somehow.
+      </p>
+    </section>
+
+    <script>
+      // Scroll animation
+      const sections = document.querySelectorAll("section");
+      window.addEventListener("scroll", () => {
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 100) {
+            section.style.opacity = "1";
+            section.style.transform = "translateY(0)";
+          } else {
+            section.style.opacity = "0";
+            section.style.transform = "translateY(50px)";
+          }
+        });
+      });
+      sections.forEach((section) => {
+        section.style.transition = "all 0.5s";
+        section.style.opacity = "0";
+        section.style.transform = "translateY(50px)";
+      });
+
+      // Mist sparkle
+      const mist = document.querySelector(".mist");
+      setInterval(() => {
+        mist.style.backgroundPosition = `${Math.random() * 100}px ${
+          Math.random() * 100
+        }px`;
+      }, 2000);
+
+      // Spell submission
+      function addSpell() {
+        const name = document.getElementById("spellName").value;
+        const desc = document.getElementById("spellDesc").value;
+        if (name && desc) {
+          const container = document.querySelector("#spells .card-container");
+          const newCard = document.createElement("div");
+          newCard.className = "card";
+          newCard.innerHTML = `<h3>${name}</h3><p>${desc}</p>`;
+          container.appendChild(newCard);
+          document.getElementById("spellName").value = "";
+          document.getElementById("spellDesc").value = "";
+        }
+      }
+
+      // Tale submission
+      function addTale() {
+        const title = document.getElementById("taleTitle").value;
+        const text = document.getElementById("taleText").value;
+        if (title && text) {
+          const container = document.querySelector("#tales .card-container");
+          const newCard = document.createElement("div");
+          newCard.className = "card";
+          newCard.innerHTML = `<h3>${title}</h3><p>${text}</p>`;
+          container.appendChild(newCard);
+          document.getElementById("taleTitle").value = "";
+          document.getElementById("taleText").value = "";
+        }
+      }
+
+      // Mood switcher
+      function changeMood(mood) {
+        const banner = document.querySelector(".banner");
+        if (mood === "starry") {
+          banner.style.backgroundImage =
+            "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url('https://i.pinimg.com/736x/2f/d7/16/2fd716b1c34beded5c5c7e9189e51e3c.jpg')";
+            banner.style.backgroundSize = "100%"; 
+            banner.style.backgroundPosition = "center 20%";
+        } else if (mood === "misty") {
+          banner.style.backgroundImage =
+            "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url('https://i.pinimg.com/736x/4e/7e/a6/4e7ea6b2cd750ae2ed20a6bb46876603.jpg')";
+            banner.style.backgroundSize = "95%"; 
+        banner.style.backgroundPosition = "center 20%";
+        }
+      }
+
+      // Quiz logic
+      const questions = {
+        sports: [
+          {
+            question: "Who won the FIFA World Cup in 2018?",
+            options: ["A. Germany", "B. Brazil", "C. France", "D. Argentina"],
+            answer: "C",
+          },
+          {
+            question: "Which country is the birthplace of cricket?",
+            options: [
+              "A. India",
+              "B. Australia",
+              "C. England",
+              "D. South Africa",
+            ],
+            answer: "C",
+          },
+          {
+            question:
+              "Who holds the record for most goals in the Premier League?",
+            options: [
+              "A. Cristiano Ronaldo",
+              "B. Alan Shearer",
+              "C. Thierry Henry",
+              "D. Wayne Rooney",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which country won the 2021 ICC T20 World Cup?",
+            options: ["A. Pakistan", "B. England", "C. Australia", "D. India"],
+            answer: "C",
+          },
+          {
+            question: "Which city hosted the 2008 Summer Olympics?",
+            options: ["A. London", "B. Beijing", "C. Athens", "D. Sydney"],
+            answer: "B",
+          },
+          {
+            question:
+              "Who is known as 'The Greatest of All Time' in basketball?",
+            options: [
+              "A. Kobe Bryant",
+              "B. Michael Jordan",
+              "C. LeBron James",
+              "D. Magic Johnson",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What is the national sport of Canada?",
+            options: [
+              "A. Basketball",
+              "B. Baseball",
+              "C. Ice Hockey",
+              "D. Football",
+            ],
+            answer: "C",
+          },
+          {
+            question:
+              "Who has won the most Grand Slam singles titles in tennis?",
+            options: [
+              "A. Roger Federer",
+              "B. Rafael Nadal",
+              "C. Novak Djokovic",
+              "D. Serena Williams",
+            ],
+            answer: "C",
+          },
+          {
+            question:
+              "Which country did the USA defeat to win the 1999 Women's World Cup?",
+            options: ["A. China", "B. Brazil", "C. Germany", "D. Norway"],
+            answer: "A",
+          },
+          {
+            question: "Which sport is known as 'The King of Sports'?",
+            options: ["A. Football", "B. Basketball", "C. Tennis", "D. Rugby"],
+            answer: "A",
+          },
+          {
+            question:
+              "Which football club won the UEFA Champions League in 2020?",
+            options: [
+              "A. Barcelona",
+              "B. Real Madrid",
+              "C. Bayern Munich",
+              "D. Manchester City",
+            ],
+            answer: "C",
+          },
+          {
+            question: "Which player has won the most Ballon d'Or awards?",
+            options: [
+              "A. Lionel Messi",
+              "B. Cristiano Ronaldo",
+              "C. Michel Platini",
+              "D. Zinedine Zidane",
+            ],
+            answer: "A",
+          },
+          {
+            question:
+              "What is the name of the race that takes place annually at the Monaco Grand Prix?",
+            options: [
+              "A. Formula 1",
+              "B. Indy 500",
+              "C. Le Mans",
+              "D. Tour de France",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Which country is known for inventing baseball?",
+            options: [
+              "A. Japan",
+              "B. Cuba",
+              "C. United States",
+              "D. Dominican Republic",
+            ],
+            answer: "C",
+          },
+          {
+            question: "Which country won the 2016 Summer Olympics?",
+            options: ["A. USA", "B. China", "C. Russia", "D. Japan"],
+            answer: "A",
+          },
+          {
+            question:
+              "What country is the birthplace of tennis star Serena Williams?",
+            options: ["A. USA", "B. France", "C. Australia", "D. Canada"],
+            answer: "A",
+          },
+          {
+            question:
+              "Which tennis player has the most Grand Slam titles in the Open Era?",
+            options: [
+              "A. Roger Federer",
+              "B. Serena Williams",
+              "C. Rafael Nadal",
+              "D. Novak Djokovic",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which is the oldest baseball team in the United States?",
+            options: [
+              "A. Boston Red Sox",
+              "B. New York Yankees",
+              "C. Chicago Cubs",
+              "D. Los Angeles Dodgers",
+            ],
+            answer: "C",
+          },
+        ],
+        film: [
+          {
+            question: "Who played the role of Jack Dawson in Titanic?",
+            options: [
+              "A. Johnny Depp",
+              "B. Leonardo DiCaprio",
+              "C. Brad Pitt",
+              "D. Tom Hanks",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which film won the Oscar for Best Picture in 1994?",
+            options: [
+              "A. Forrest Gump",
+              "B. Pulp Fiction",
+              "C. Shawshank Redemption",
+              "D. The Lion King",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Who directed the film 'Inception'?",
+            options: [
+              "A. Steven Spielberg",
+              "B. Christopher Nolan",
+              "C. Quentin Tarantino",
+              "D. Martin Scorsese",
+            ],
+            answer: "B",
+          },
+          {
+            question:
+              "Which movie won the first Academy Award for Best Animated Feature?",
+            options: [
+              "A. Toy Story",
+              "B. Shrek",
+              "C. Finding Nemo",
+              "D. The Incredibles",
+            ],
+            answer: "B",
+          },
+          {
+            question:
+              "What is the name of the fictional country in Black Panther?",
+            options: ["A. Zamunda", "B. Wakanda", "C. Elbonia", "D. Genovia"],
+            answer: "B",
+          },
+          {
+            question: "Who is the villain in the film 'The Dark Knight'?",
+            options: ["A. Bane", "B. The Joker", "C. Scarecrow", "D. Riddler"],
+            answer: "B",
+          },
+          {
+            question: "Which 1999 film featured the line 'I see dead people'?",
+            options: [
+              "A. Sixth Sense",
+              "B. The Ring",
+              "C. The Others",
+              "D. The Grudge",
+            ],
+            answer: "A",
+          },
+          {
+            question:
+              "In which movie did Audrey Hepburn famously play the character Holly Golightly?",
+            options: [
+              "A. Roman Holiday",
+              "B. Sabrina",
+              "C. Breakfast at Tiffany's",
+              "D. My Fair Lady",
+            ],
+            answer: "C",
+          },
+          {
+            question: "What 2008 movie introduced the character of Iron Man?",
+            options: [
+              "A. The Avengers",
+              "B. Iron Man",
+              "C. Thor",
+              "D. Captain America: The First Avenger",
+            ],
+            answer: "B",
+          },
+          {
+            question:
+              "Which 2017 movie became the highest-grossing film of all time (until it was surpassed by Avengers: Endgame)?",
+            options: [
+              "A. Avatar",
+              "B. Star Wars: The Force Awakens",
+              "C. Titanic",
+              "D. Jurassic World",
+            ],
+            answer: "A",
+          },
+          {
+            question:
+              "Which 1994 film starred Tom Hanks as a man with a low IQ?",
+            options: [
+              "A. Forrest Gump",
+              "B. Castaway",
+              "C. Saving Private Ryan",
+              "D. Big",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Who directed the epic film 'Titanic'?",
+            options: [
+              "A. James Cameron",
+              "B. Ridley Scott",
+              "C. Steven Spielberg",
+              "D. George Lucas",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Which movie features a giant ape named King Kong?",
+            options: [
+              "A. Jurassic Park",
+              "B. King Kong",
+              "C. Godzilla",
+              "D. The Hobbit",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What animated film features the character Simba?",
+            options: [
+              "A. Finding Nemo",
+              "B. Aladdin",
+              "C. The Lion King",
+              "D. Pocahontas",
+            ],
+            answer: "C",
+          },
+          {
+            question:
+              "What movie series is centered around the character of Frodo Baggins?",
+            options: [
+              "A. Harry Potter",
+              "B. Lord of the Rings",
+              "C. Chronicles of Narnia",
+              "D. Twilight",
+            ],
+            answer: "B",
+          },
+          {
+            question:
+              "In which movie did Leonardo DiCaprio famously scream 'I’m the king of the world!'?",
+            options: [
+              "A. The Revenant",
+              "B. Titanic",
+              "C. Inception",
+              "D. The Wolf of Wall Street",
+            ],
+            answer: "B",
+          },
+        ],
+        anime: [
+          {
+            question: "Who is the main protagonist of Naruto?",
+            options: [
+              "A. Sasuke Uchiha",
+              "B. Sakura Haruno",
+              "C. Naruto Uzumaki",
+              "D. Kakashi Hatake",
+            ],
+            answer: "C",
+          },
+          {
+            question:
+              "What is the name of the main character in Attack on Titan?",
+            options: [
+              "A. Eren Yeager",
+              "B. Levi Ackerman",
+              "C. Mikasa Ackerman",
+              "D. Armin Arlert",
+            ],
+            answer: "A",
+          },
+          {
+            question:
+              "In Dragon Ball Z, who is known as the 'Prince of All Saiyans'?",
+            options: ["A. Goku", "B. Vegeta", "C. Trunks", "D. Piccolo"],
+            answer: "B",
+          },
+          {
+            question:
+              "Which anime features a character named Luffy who dreams of becoming the Pirate King?",
+            options: [
+              "A. Bleach",
+              "B. Naruto",
+              "C. One Piece",
+              "D. Dragon Ball Z",
+            ],
+            answer: "C",
+          },
+          {
+            question:
+              "In Fullmetal Alchemist, what is the forbidden act the Elric brothers commit?",
+            options: [
+              "A. Time travel",
+              "B. Human transmutation",
+              "C. Soul binding",
+              "D. Blood sacrifice",
+            ],
+            answer: "B",
+          },
+          {
+            question:
+              "In My Hero Academia, what is the name of the main character's Quirk?",
+            options: [
+              "A. Quirkless",
+              "B. One For All",
+              "C. Fireball",
+              "D. Spider Sense",
+            ],
+            answer: "B",
+          },
+          {
+            question:
+              "What anime features the powerful organization known as the Akatsuki?",
+            options: [
+              "A. Naruto",
+              "B. Bleach",
+              "C. One Piece",
+              "D. Dragon Ball Z",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Who is the main villain in the anime Death Note?",
+            options: ["A. Light Yagami", "B. L", "C. Ryuk", "D. Near"],
+            answer: "A",
+          },
+          {
+            question:
+              "In Demon Slayer, what is the name of the main character's demon-slaying sword?",
+            options: [
+              "A. Black Saber",
+              "B. Nichirin Blade",
+              "C. Katana of the Flame",
+              "D. Steel Fang",
+            ],
+            answer: "B",
+          },
+          {
+            question:
+              "Which anime features characters traveling on the 'Thousand Sunny' ship?",
+            options: [
+              "A. One Piece",
+              "B. Bleach",
+              "C. Naruto",
+              "D. Attack on Titan",
+            ],
+            answer: "A",
+          },
+        ],
+        history: [
+          {
+            question: "Who was the first President of the United States?",
+            options: [
+              "A. George Washington",
+              "B. Abraham Lincoln",
+              "C. Thomas Jefferson",
+              "D. John Adams",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What year did the Titanic sink?",
+            options: ["A. 1910", "B. 1912", "C. 1905", "D. 1915"],
+            answer: "B",
+          },
+          {
+            question:
+              "Which battle is considered the turning point of the American Civil War?",
+            options: [
+              "A. Battle of Gettysburg",
+              "B. Battle of Antietam",
+              "C. Battle of Fort Sumter",
+              "D. Battle of Bunker Hill",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Which empire was ruled by Julius Caesar?",
+            options: [
+              "A. Roman Empire",
+              "B. Ottoman Empire",
+              "C. Byzantine Empire",
+              "D. Mongol Empire",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What event triggered World War I?",
+            options: [
+              "A. Assassination of Archduke Franz Ferdinand",
+              "B. Attack on Pearl Harbor",
+              "C. The Treaty of Versailles",
+              "D. The invasion of Poland",
+            ],
+            answer: "A",
+          },
+          {
+            question:
+              "Who was the first woman to fly solo across the Atlantic?",
+            options: [
+              "A. Amelia Earhart",
+              "B. Bessie Coleman",
+              "C. Jacqueline Cochran",
+              "D. Sally Ride",
+            ],
+            answer: "A",
+          },
+          {
+            question: "In which year did the Berlin Wall fall?",
+            options: ["A. 1989", "B. 1975", "C. 1991", "D. 1985"],
+            answer: "A",
+          },
+          {
+            question:
+              "What was the name of the ship that carried the Pilgrims to America in 1620?",
+            options: [
+              "A. Mayflower",
+              "B. Nina",
+              "C. Santa Maria",
+              "D. Discovery",
+            ],
+            answer: "A",
+          },
+          {
+            question:
+              "What event led to the United States' entry into World War II?",
+            options: [
+              "A. Attack on Pearl Harbor",
+              "B. The invasion of Poland",
+              "C. The Battle of Midway",
+              "D. The signing of the Munich Agreement",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Which ancient civilization built the pyramids of Giza?",
+            options: [
+              "A. Ancient Greece",
+              "B. Ancient Egypt",
+              "C. Ancient Rome",
+              "D. The Aztecs",
+            ],
+            answer: "B",
+          },
+        ],
+        science: [
+          {
+            question: "What is the chemical symbol for water?",
+            options: ["A. O2", "B. H2O", "C. CO2", "D. H2"],
+            answer: "B",
+          },
+          {
+            question: "Who developed the theory of relativity?",
+            options: [
+              "A. Isaac Newton",
+              "B. Albert Einstein",
+              "C. Galileo Galilei",
+              "D. Nikola Tesla",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What gas do plants absorb during photosynthesis?",
+            options: [
+              "A. Oxygen",
+              "B. Nitrogen",
+              "C. Carbon Dioxide",
+              "D. Hydrogen",
+            ],
+            answer: "C",
+          },
+          {
+            question: "What is the largest planet in our solar system?",
+            options: ["A. Earth", "B. Mars", "C. Jupiter", "D. Saturn"],
+            answer: "C",
+          },
+          {
+            question: "What is the main function of the heart?",
+            options: [
+              "A. To pump blood",
+              "B. To digest food",
+              "C. To filter waste",
+              "D. To regulate body temperature",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What is the basic unit of life?",
+            options: ["A. Atom", "B. Molecule", "C. Cell", "D. Organ"],
+            answer: "C",
+          },
+          {
+            question: "What is the center of an atom called?",
+            options: ["A. Electron", "B. Proton", "C. Nucleus", "D. Neutron"],
+            answer: "C",
+          },
+          {
+            question: "What is the boiling point of water?",
+            options: ["A. 100°F", "B. 32°C", "C. 212°F", "D. 98.6°F"],
+            answer: "C",
+          },
+          {
+            question:
+              "Which scientist is credited with the discovery of penicillin?",
+            options: [
+              "A. Louis Pasteur",
+              "B. Isaac Newton",
+              "C. Albert Einstein",
+              "D. Alexander Fleming",
+            ],
+            answer: "D",
+          },
+          {
+            question: "What is the chemical symbol for gold?",
+            options: ["A. Au", "B. Ag", "C. Pt", "D. Fe"],
+            answer: "A",
+          },
+          {
+            question: "What planet is known as the Red Planet?",
+            options: ["A. Venus", "B. Mars", "C. Jupiter", "D. Saturn"],
+            answer: "B",
+          },
+          {
+            question: "What is the powerhouse of the cell?",
+            options: [
+              "A. Nucleus",
+              "B. Mitochondria",
+              "C. Chloroplast",
+              "D. Ribosome",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What is the hardest natural substance on Earth?",
+            options: ["A. Gold", "B. Diamond", "C. Iron", "D. Steel"],
+            answer: "B",
+          },
+          {
+            question: "What is the boiling point of water in Celsius?",
+            options: ["A. 90°C", "B. 100°C", "C. 110°C", "D. 120°C"],
+            answer: "B",
+          },
+          {
+            question: "What type of animal is a Komodo dragon?",
+            options: ["A. Mammal", "B. Reptile", "C. Bird", "D. Amphibian"],
+            answer: "B",
+          },
+          {
+            question: "Which planet is closest to the sun?",
+            options: ["A. Venus", "B. Earth", "C. Mercury", "D. Mars"],
+            answer: "C",
+          },
+          {
+            question: "What is the most common element in Earth's crust?",
+            options: ["A. Oxygen", "B. Silicon", "C. Iron", "D. Magnesium"],
+            answer: "B",
+          },
+          {
+            question:
+              "What organ in the human body is responsible for pumping blood?",
+            options: ["A. Brain", "B. Heart", "C. Stomach", "D. Lungs"],
+            answer: "B",
+          },
+          {
+            question: "Who is known as the father of modern physics?",
+            options: [
+              "A. Albert Einstein",
+              "B. Isaac Newton",
+              "C. Niels Bohr",
+              "D. James Clerk Maxwell",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What is the term for the process by which cells divide?",
+            options: [
+              "A. Photosynthesis",
+              "B. Mitosis",
+              "C. Respiration",
+              "D. Osmosis",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What is the largest mammal in the world?",
+            options: [
+              "A. Elephant",
+              "B. Blue Whale",
+              "C. Giraffe",
+              "D. Rhinoceros",
+            ],
+            answer: "B",
+          },
+          {
+            question:
+              "Which scientist is credited with the discovery of the electron?",
+            options: [
+              "A. Albert Einstein",
+              "B. Ernest Rutherford",
+              "C. Niels Bohr",
+              "D. J.J. Thomson",
+            ],
+            answer: "D",
+          },
+          {
+            question:
+              "Which element is most commonly used in the production of semiconductors?",
+            options: ["A. Silicon", "B. Germanium", "C. Copper", "D. Gold"],
+            answer: "A",
+          },
+        ],
+        mythology: [
+          {
+            question: "Who is the Greek god of thunder?",
+            options: ["A. Zeus", "B. Apollo", "C. Ares", "D. Poseidon"],
+            answer: "A",
+          },
+          {
+            question:
+              "What animal is associated with the Egyptian goddess Bastet?",
+            options: ["A. Lion", "B. Cat", "C. Falcon", "D. Snake"],
+            answer: "B",
+          },
+          {
+            question: "In Norse mythology, who is the god of mischief?",
+            options: ["A. Thor", "B. Loki", "C. Odin", "D. Freyja"],
+            answer: "B",
+          },
+          {
+            question:
+              "Which creature in Greek mythology has the body of a lion, wings of an eagle, and head of a woman?",
+            options: ["A. Sphinx", "B. Griffin", "C. Chimera", "D. Minotaur"],
+            answer: "A",
+          },
+          {
+            question: "Who is the Roman goddess of love?",
+            options: ["A. Venus", "B. Juno", "C. Diana", "D. Ceres"],
+            answer: "A",
+          },
+          {
+            question:
+              "In Greek mythology, who was cursed to turn everything she touched into gold?",
+            options: ["A. Medusa", "B. Hera", "C. Persephone", "D. King Midas"],
+            answer: "D",
+          },
+          {
+            question:
+              "In Egyptian mythology, who is the god of the underworld?",
+            options: ["A. Anubis", "B. Horus", "C. Ra", "D. Osiris"],
+            answer: "A",
+          },
+          {
+            question:
+              "In Norse mythology, what is the name of the tree that connects the Nine Worlds?",
+            options: [
+              "A. Yggdrasil",
+              "B. The World Tree",
+              "C. Ash Tree",
+              "D. Elm",
+            ],
+            answer: "A",
+          },
+          {
+            question:
+              "Which Greek hero fought in the Trojan War and was invulnerable except for his heel?",
+            options: [
+              "A. Hercules",
+              "B. Achilles",
+              "C. Odysseus",
+              "D. Theseus",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Who is the king of the gods in Roman mythology?",
+            options: ["A. Zeus", "B. Mars", "C. Jupiter", "D. Saturn"],
+            answer: "C",
+          },
+          {
+            question: "What is the name of the Greek goddess of wisdom?",
+            options: ["A. Hera", "B. Athena", "C. Artemis", "D. Aphrodite"],
+            answer: "B",
+          },
+          {
+            question:
+              "What is the name of the Norse goddess of love and fertility?",
+            options: ["A. Freyja", "B. Sif", "C. Idun", "D. Skadi"],
+            answer: "A",
+          },
+          {
+            question:
+              "In Greek mythology, who was punished by being forced to hold up the heavens?",
+            options: ["A. Prometheus", "B. Atlas", "C. Hades", "D. Hermes"],
+            answer: "B",
+          },
+          {
+            question: "Who was the Greek god of the sea?",
+            options: ["A. Poseidon", "B. Hades", "C. Hermes", "D. Hephaestus"],
+            answer: "A",
+          },
+          {
+            question:
+              "What winged creature in Greek mythology was the son of Daedalus?",
+            options: ["A. Minotaur", "B. Medusa", "C. Icarus", "D. Perseus"],
+            answer: "C",
+          },
+          {
+            question: "Who is the god of war in Greek mythology?",
+            options: ["A. Apollo", "B. Ares", "C. Hermes", "D. Hephaestus"],
+            answer: "B",
+          },
+        ],
+        literature: [
+          {
+            question: "Who wrote '1984'?",
+            options: [
+              "A. Aldous Huxley",
+              "B. George Orwell",
+              "C. J.R.R. Tolkien",
+              "D. Ray Bradbury",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What is the title of the first Harry Potter book?",
+            options: [
+              "A. Harry Potter and the Chamber of Secrets",
+              "B. Harry Potter and the Prisoner of Azkaban",
+              "C. Harry Potter and the Philosopher's Stone",
+              "D. Harry Potter and the Goblet of Fire",
+            ],
+            answer: "C",
+          },
+          {
+            question: "Who wrote 'Pride and Prejudice'?",
+            options: [
+              "A. Jane Austen",
+              "B. Charles Dickens",
+              "C. Mark Twain",
+              "D. Emily Brontë",
+            ],
+            answer: "A",
+          },
+          {
+            question:
+              "What is the name of the fictional land in 'The Chronicles of Narnia'?",
+            options: [
+              "A. Middle Earth",
+              "B. Narnia",
+              "C. Hogwarts",
+              "D. Neverland",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Who is the author of 'Moby-Dick'?",
+            options: [
+              "A. Nathaniel Hawthorne",
+              "B. Herman Melville",
+              "C. Edgar Allan Poe",
+              "D. Walt Whitman",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Who wrote the epic poem 'The Odyssey'?",
+            options: ["A. Homer", "B. Virgil", "C. Aristotle", "D. Plato"],
+            answer: "A",
+          },
+          {
+            question:
+              "What is the name of the detective in Agatha Christie's novels?",
+            options: [
+              "A. Hercule Poirot",
+              "B. Sherlock Holmes",
+              "C. Miss Marple",
+              "D. Sam Spade",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Who wrote 'The Great Gatsby'?",
+            options: [
+              "A. F. Scott Fitzgerald",
+              "B. John Steinbeck",
+              "C. J.D. Salinger",
+              "D. William Faulkner",
+            ],
+            answer: "A",
+          },
+          {
+            question:
+              "In which book would you find the character Holden Caulfield?",
+            options: [
+              "A. To Kill a Mockingbird",
+              "B. The Catcher in the Rye",
+              "C. Of Mice and Men",
+              "D. The Grapes of Wrath",
+            ],
+            answer: "B",
+          },
+          {
+            question:
+              "What is the name of the island in William Golding's 'Lord of the Flies'?",
+            options: [
+              "A. Gull Island",
+              "B. Treasure Island",
+              "C. The Coral Island",
+              "D. The Island of the Lost",
+            ],
+            answer: "C",
+          },
+          {
+            question: "Who wrote 'Frankenstein'?",
+            options: [
+              "A. Edgar Allan Poe",
+              "B. Mary Shelley",
+              "C. Bram Stoker",
+              "D. H.G. Wells",
+            ],
+            answer: "B",
+          },
+          {
+            question:
+              "In which novel does the character Ebenezer Scrooge appear?",
+            options: [
+              "A. A Tale of Two Cities",
+              "B. Great Expectations",
+              "C. A Christmas Carol",
+              "D. Oliver Twist",
+            ],
+            answer: "C",
+          },
+          {
+            question:
+              "What is the title of the second book in J.R.R. Tolkien's 'The Lord of the Rings' trilogy?",
+            options: [
+              "A. The Fellowship of the Ring",
+              "B. The Two Towers",
+              "C. The Return of the King",
+              "D. The Hobbit",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Who is the author of 'The Catcher in the Rye'?",
+            options: [
+              "A. Ernest Hemingway",
+              "B. J.D. Salinger",
+              "C. F. Scott Fitzgerald",
+              "D. Mark Twain",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What novel features the character Winston Smith?",
+            options: [
+              "A. Brave New World",
+              "B. 1984",
+              "C. Animal Farm",
+              "D. Fahrenheit 451",
+            ],
+            answer: "B",
+          },
+        ],
+        food: [
+          {
+            question: "Which fruit is traditionally used to make guacamole?",
+            options: ["A. Mango", "B. Avocado", "C. Tomato", "D. Lime"],
+            answer: "B",
+          },
+          {
+            question: "What is the main ingredient in tofu?",
+            options: ["A. Soybeans", "B. Rice", "C. Wheat", "D. Peas"],
+            answer: "A",
+          },
+          {
+            question:
+              "Which Italian dish is made from layers of pasta, meat sauce, and cheese?",
+            options: ["A. Pizza", "B. Risotto", "C. Lasagna", "D. Spaghetti"],
+            answer: "C",
+          },
+          {
+            question:
+              "Which type of cuisine is sushi traditionally associated with?",
+            options: ["A. Chinese", "B. Japanese", "C. Thai", "D. Korean"],
+            answer: "B",
+          },
+          {
+            question: "What type of pasta is shaped like small tubes?",
+            options: ["A. Spaghetti", "B. Penne", "C. Fusilli", "D. Farfalle"],
+            answer: "B",
+          },
+          {
+            question: "Which vegetable is used to make sauerkraut?",
+            options: ["A. Cabbage", "B. Carrot", "C. Cucumber", "D. Potato"],
+            answer: "A",
+          },
+          {
+            question:
+              "What kind of fish is traditionally used to make ceviche?",
+            options: ["A. Salmon", "B. Tuna", "C. Tilapia", "D. White fish"],
+            answer: "D",
+          },
+          {
+            question: "What is the primary ingredient in hummus?",
+            options: ["A. Chickpeas", "B. Lentils", "C. Beans", "D. Eggplant"],
+            answer: "A",
+          },
+          {
+            question: "What spice is the main ingredient in curry?",
+            options: ["A. Cinnamon", "B. Turmeric", "C. Pepper", "D. Saffron"],
+            answer: "B",
+          },
+          {
+            question:
+              "What type of cheese is used in traditional Italian pizza?",
+            options: ["A. Cheddar", "B. Mozzarella", "C. Parmesan", "D. Gouda"],
+            answer: "B",
+          },
+        ],
+        lifestyle: [
+          {
+            question: "What’s the main ingredient in guacamole?",
+            options: ["A. Tomato", "B. Avocado", "C. Onion", "D. Lime"],
+            answer: "B",
+          },
+          {
+            question: "Which flower symbolizes love?",
+            options: ["A. Rose", "B. Daisy", "C. Tulip", "D. Lily"],
+            answer: "A",
+          },
+          {
+            question:
+              "What is the traditional color of a wedding dress in Western cultures?",
+            options: ["A. Red", "B. White", "C. Blue", "D. Green"],
+            answer: "B",
+          },
+          {
+            question: "Which drink is made from fermented grapes?",
+            options: ["A. Beer", "B. Wine", "C. Vodka", "D. Whiskey"],
+            answer: "B",
+          },
+          {
+            question: "What’s a common topping on pizza?",
+            options: [
+              "A. Chocolate",
+              "B. Pepperoni",
+              "C. Ice cream",
+              "D. Ketchup",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which fabric is derived from silkworms?",
+            options: ["A. Cotton", "B. Wool", "C. Silk", "D. Linen"],
+            answer: "C",
+          },
+          {
+            question: "What’s the name of a popular yoga pose?",
+            options: [
+              "A. Downward Dog",
+              "B. Jumping Jack",
+              "C. Push-Up",
+              "D. Squat",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Which fruit is known for its spiky exterior?",
+            options: ["A. Apple", "B. Pineapple", "C. Orange", "D. Banana"],
+            answer: "B",
+          },
+          {
+            question: "What’s a common breakfast cereal?",
+            options: ["A. Corn Flakes", "B. Spaghetti", "C. Rice", "D. Soup"],
+            answer: "A",
+          },
+          {
+            question:
+              "Which holiday is associated with gift-giving in December?",
+            options: [
+              "A. Halloween",
+              "B. Christmas",
+              "C. Easter",
+              "D. Thanksgiving",
+            ],
+            answer: "B",
+          },
+        ],
+        music: [
+          {
+            question: "Who sang 'Bohemian Rhapsody'?",
+            options: [
+              "A. Queen",
+              "B. The Beatles",
+              "C. ABBA",
+              "D. Rolling Stones",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Which instrument has 88 keys?",
+            options: ["A. Guitar", "B. Piano", "C. Violin", "D. Drums"],
+            answer: "B",
+          },
+          {
+            question: "What genre is Bob Marley famous for?",
+            options: ["A. Rock", "B. Reggae", "C. Jazz", "D. Classical"],
+            answer: "B",
+          },
+          {
+            question: "Who is known as the 'King of Pop'?",
+            options: [
+              "A. Elvis Presley",
+              "B. Michael Jackson",
+              "C. Prince",
+              "D. Justin Bieber",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which band released 'Hotel California'?",
+            options: [
+              "A. The Eagles",
+              "B. Led Zeppelin",
+              "C. The Doors",
+              "D. Pink Floyd",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What’s the name of Beyoncé’s debut solo album?",
+            options: [
+              "A. Lemonade",
+              "B. Dangerously in Love",
+              "C. I Am… Sasha Fierce",
+              "D. 4",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which rapper released 'The Slim Shady LP'?",
+            options: ["A. Jay-Z", "B. Eminem", "C. Kanye West", "D. Drake"],
+            answer: "B",
+          },
+          {
+            question: "What instrument does a drummer play?",
+            options: ["A. Drums", "B. Guitar", "C. Trumpet", "D. Flute"],
+            answer: "A",
+          },
+          {
+            question: "Who wrote the song 'Imagine'?",
+            options: [
+              "A. Paul McCartney",
+              "B. John Lennon",
+              "C. George Harrison",
+              "D. Ringo Starr",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which genre uses turntables and scratching?",
+            options: ["A. Hip-Hop", "B. Country", "C. Opera", "D. Blues"],
+            answer: "A",
+          },
+        ],
+        geography: [
+          {
+            question: "Which river flows through Cairo?",
+            options: ["A. Nile", "B. Amazon", "C. Thames", "D. Mississippi"],
+            answer: "A",
+          },
+          {
+            question: "What’s the capital of Brazil?",
+            options: [
+              "A. Rio de Janeiro",
+              "B. São Paulo",
+              "C. Brasília",
+              "D. Salvador",
+            ],
+            answer: "C",
+          },
+          {
+            question: "Which continent is the Sahara Desert on?",
+            options: [
+              "A. Asia",
+              "B. Africa",
+              "C. Australia",
+              "D. South America",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What’s the smallest country by land area?",
+            options: [
+              "A. Monaco",
+              "B. Vatican City",
+              "C. Liechtenstein",
+              "D. San Marino",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which mountain is the tallest in the world?",
+            options: ["A. K2", "B. Everest", "C. Kilimanjaro", "D. Denali"],
+            answer: "B",
+          },
+          {
+            question: "What ocean lies between Europe and North America?",
+            options: ["A. Pacific", "B. Atlantic", "C. Indian", "D. Arctic"],
+            answer: "B",
+          },
+          {
+            question: "Which country has the most deserts?",
+            options: [
+              "A. Egypt",
+              "B. Australia",
+              "C. Antarctica",
+              "D. Saudi Arabia",
+            ],
+            answer: "C",
+          },
+          {
+            question: "What’s the capital of Japan?",
+            options: ["A. Osaka", "B. Kyoto", "C. Tokyo", "D. Hiroshima"],
+            answer: "C",
+          },
+          {
+            question: "Which city is known as the 'City of Love'?",
+            options: ["A. Paris", "B. Venice", "C. Rome", "D. New York"],
+            answer: "A",
+          },
+          {
+            question: "What’s the longest river in South America?",
+            options: ["A. Amazon", "B. Paraná", "C. Orinoco", "D. Magdalena"],
+            answer: "A",
+          },
+        ],
+        politics: [
+          {
+            question: "Who was the first female U.S. Vice President?",
+            options: [
+              "A. Hillary Clinton",
+              "B. Kamala Harris",
+              "C. Nancy Pelosi",
+              "D. Condoleezza Rice",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which country’s leader is called the Chancellor?",
+            options: ["A. Germany", "B. France", "C. UK", "D. Russia"],
+            answer: "A",
+          },
+          {
+            question: "What document outlines the U.S. government structure?",
+            options: [
+              "A. Declaration of Independence",
+              "B. Constitution",
+              "C. Bill of Rights",
+              "D. Magna Carta",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Who was the UK Prime Minister during World War II?",
+            options: [
+              "A. Winston Churchill",
+              "B. Neville Chamberlain",
+              "C. Margaret Thatcher",
+              "D. Tony Blair",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Which political party uses a donkey as its symbol?",
+            options: [
+              "A. Republicans",
+              "B. Democrats",
+              "C. Libertarians",
+              "D. Greens",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What’s the term length of a U.S. Senator?",
+            options: ["A. 2 years", "B. 4 years", "C. 6 years", "D. 8 years"],
+            answer: "C",
+          },
+          {
+            question:
+              "Which country was the first to grant women the right to vote?",
+            options: ["A. USA", "B. UK", "C. New Zealand", "D. France"],
+            answer: "C",
+          },
+          {
+            question:
+              "Who succeeded Nelson Mandela as President of South Africa?",
+            options: [
+              "A. Thabo Mbeki",
+              "B. Jacob Zuma",
+              "C. Cyril Ramaphosa",
+              "D. F.W. de Klerk",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What’s the official residence of the U.S. President?",
+            options: [
+              "A. Capitol Hill",
+              "B. White House",
+              "C. Pentagon",
+              "D. Camp David",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which treaty ended World War I?",
+            options: [
+              "A. Treaty of Versailles",
+              "B. Treaty of Paris",
+              "C. Treaty of Tordesillas",
+              "D. Treaty of Westphalia",
+            ],
+            answer: "A",
+          },
+        ],
+        wizard_puns: [
+          {
+            question: "Why don’t wizards play hide and seek?",
+            options: [
+              "A. They’d vanish",
+              "B. They’re too spell-tacular",
+              "C. They hex the rules",
+              "D. They’d charm the seeker",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What’s a wizard’s favorite dessert?",
+            options: [
+              "A. Spell-berry pie",
+              "B. Wand-erful cake",
+              "C. Hex-cream",
+              "D. Magic mousse",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Why did the wizard refuse to dance?",
+            options: [
+              "A. He’d trip on his robe",
+              "B. His wand wouldn’t twirl",
+              "C. He’d hex the beat",
+              "D. He’d charm the floor",
+            ],
+            answer: "C",
+          },
+          {
+            question: "What do wizards use to write music?",
+            options: [
+              "A. Spell-sheets",
+              "B. Wand-ophones",
+              "C. Hex-chords",
+              "D. Magic notes",
+            ],
+            answer: "C",
+          },
+          {
+            question: "Why don’t wizards play cards?",
+            options: [
+              "A. They’d charm the deck",
+              "B. They’d hex the ace",
+              "C. They’d vanish the jokers",
+              "D. They’d spell the win",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What’s a wizard’s favorite pet?",
+            options: [
+              "A. Spell-cat",
+              "B. Wand-ering dog",
+              "C. Hex-toad",
+              "D. Magic owl",
+            ],
+            answer: "D",
+          },
+          {
+            question: "Why did the wizard fail art class?",
+            options: [
+              "A. He hexed the canvas",
+              "B. His wand drew squiggles",
+              "C. He spelled the paint",
+              "D. He vanished the brush",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What’s a wizard’s favorite sport?",
+            options: [
+              "A. Quidditch",
+              "B. Hex-ball",
+              "C. Wand-racing",
+              "D. Spell-tennis",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Why don’t wizards use phones?",
+            options: [
+              "A. They prefer owl mail",
+              "B. They’d hex the signal",
+              "C. They’d charm the caller",
+              "D. They’d vanish the battery",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What’s a wizard’s favorite drink?",
+            options: [
+              "A. Potion punch",
+              "B. Hex-presso",
+              "C. Wand-erade",
+              "D. Spell-soda",
+            ],
+            answer: "A",
+          },
+        ],
+        fantasy: [
+          {
+            question: "What creature guards treasure in mythology?",
+            options: ["A. Dragon", "B. Unicorn", "C. Phoenix", "D. Griffin"],
+            answer: "A",
+          },
+          {
+            question: "Who wields the One Ring in 'The Lord of the Rings'?",
+            options: ["A. Frodo", "B. Gandalf", "C. Sauron", "D. Aragorn"],
+            answer: "A",
+          },
+          {
+            question:
+              "What’s the name of Daenerys’ dragons in 'Game of Thrones'?",
+            options: ["A. Drogon", "B. Smaug", "C. Toothless", "D. Falkor"],
+            answer: "A",
+          },
+          {
+            question: "Which fantasy world is ruled by the White Witch?",
+            options: [
+              "A. Narnia",
+              "B. Middle-earth",
+              "C. Westeros",
+              "D. Hogwarts",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What creature is half-man, half-horse?",
+            options: ["A. Minotaur", "B. Centaur", "C. Satyr", "D. Sphinx"],
+            answer: "B",
+          },
+          {
+            question: "Who is the king of the gods in Greek mythology?",
+            options: ["A. Zeus", "B. Poseidon", "C. Hades", "D. Apollo"],
+            answer: "A",
+          },
+          {
+            question: "What’s the name of Harry Potter’s owl?",
+            options: ["A. Hedwig", "B. Errol", "C. Pigwidgeon", "D. Hermes"],
+            answer: "A",
+          },
+          {
+            question: "Which creature lures sailors to their doom?",
+            options: ["A. Mermaid", "B. Siren", "C. Selkie", "D. Kraken"],
+            answer: "B",
+          },
+          {
+            question: "What weapon does Thor wield?",
+            options: ["A. Mjölnir", "B. Excalibur", "C. Trident", "D. Gungnir"],
+            answer: "A",
+          },
+          {
+            question: "Which fantasy land is home to Hobbits?",
+            options: ["A. The Shire", "B. Gondor", "C. Rivendell", "D. Rohan"],
+            answer: "A",
+          },
+        ],
+        art: [
+          {
+            question: "Who painted the Mona Lisa?",
+            options: [
+              "A. Leonardo da Vinci",
+              "B. Michelangelo",
+              "C. Picasso",
+              "D. Van Gogh",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What art style is characterized by distorted reality?",
+            options: [
+              "A. Realism",
+              "B. Surrealism",
+              "C. Impressionism",
+              "D. Cubism",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which artist cut off part of his ear?",
+            options: ["A. Monet", "B. Van Gogh", "C. Renoir", "D. Dali"],
+            answer: "B",
+          },
+          {
+            question: "What’s the name of Picasso’s art movement?",
+            options: ["A. Cubism", "B. Abstract", "C. Pop Art", "D. Baroque"],
+            answer: "A",
+          },
+          {
+            question: "Who sculpted the statue of David?",
+            options: [
+              "A. Michelangelo",
+              "B. Donatello",
+              "C. Bernini",
+              "D. Rodin",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Which painting features a scream against a red sky?",
+            options: [
+              "A. Starry Night",
+              "B. The Scream",
+              "C. Guernica",
+              "D. Water Lilies",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What’s the medium of the Sistine Chapel ceiling?",
+            options: ["A. Oil", "B. Fresco", "C. Watercolor", "D. Acrylic"],
+            answer: "B",
+          },
+          {
+            question: "Which artist is known for melting clocks?",
+            options: [
+              "A. Salvador Dalí",
+              "B. Andy Warhol",
+              "C. Jackson Pollock",
+              "D. Claude Monet",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What color dominates Monet’s 'Water Lilies'?",
+            options: ["A. Blue", "B. Red", "C. Yellow", "D. Green"],
+            answer: "A",
+          },
+          {
+            question: "Which art period followed the Renaissance?",
+            options: ["A. Baroque", "B. Gothic", "C. Modern", "D. Classical"],
+            answer: "A",
+          },
+        ],
+        technology: [
+          {
+            question: "Who co-founded Apple Inc.?",
+            options: [
+              "A. Bill Gates",
+              "B. Steve Jobs",
+              "C. Mark Zuckerberg",
+              "D. Elon Musk",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What does CPU stand for?",
+            options: [
+              "A. Central Processing Unit",
+              "B. Computer Power Unit",
+              "C. Core Processor Utility",
+              "D. Circuit Processing Unit",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Which company created the Android OS?",
+            options: ["A. Apple", "B. Google", "C. Microsoft", "D. Samsung"],
+            answer: "B",
+          },
+          {
+            question: "What’s the name of the first widely-used web browser?",
+            options: ["A. Netscape", "B. Chrome", "C. Firefox", "D. Safari"],
+            answer: "A",
+          },
+          {
+            question: "Who invented the World Wide Web?",
+            options: [
+              "A. Tim Berners-Lee",
+              "B. Larry Page",
+              "C. Jeff Bezos",
+              "D. Alan Turing",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What’s the main function of RAM?",
+            options: [
+              "A. Permanent storage",
+              "B. Temporary memory",
+              "C. Graphics processing",
+              "D. Cooling",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which company launched the first iPhone?",
+            options: ["A. Nokia", "B. Apple", "C. Blackberry", "D. Samsung"],
+            answer: "B",
+          },
+          {
+            question: "What does USB stand for?",
+            options: [
+              "A. Universal Serial Bus",
+              "B. Ultra Speed Buffer",
+              "C. Unified System Base",
+              "D. User Storage Bit",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Which programming language was created first?",
+            options: ["A. Python", "B. Java", "C. C++", "D. Fortran"],
+            answer: "D",
+          },
+          {
+            question: "What’s Tesla’s primary product?",
+            options: [
+              "A. Smartphones",
+              "B. Electric cars",
+              "C. Laptops",
+              "D. Drones",
+            ],
+            answer: "B",
+          },
+        ],
+        nature: [
+          {
+            question: "Which animal is known for its black and white stripes?",
+            options: ["A. Zebra", "B. Tiger", "C. Panda", "D. Skunk"],
+            answer: "A",
+          },
+          {
+            question: "What’s the largest mammal in the world?",
+            options: [
+              "A. Elephant",
+              "B. Blue Whale",
+              "C. Giraffe",
+              "D. Hippopotamus",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Which bird is known for its colorful feathers?",
+            options: ["A. Sparrow", "B. Peacock", "C. Pigeon", "D. Crow"],
+            answer: "B",
+          },
+          {
+            question: "What’s the fastest land animal?",
+            options: ["A. Cheetah", "B. Lion", "C. Horse", "D. Greyhound"],
+            answer: "A",
+          },
+          {
+            question: "Which tree is known for its long lifespan?",
+            options: ["A. Oak", "B. Pine", "C. Maple", "D. Birch"],
+            answer: "A",
+          },
+          {
+            question: "What’s the primary source of energy for Earth?",
+            options: ["A. Moon", "B. Sun", "C. Wind", "D. Oceans"],
+            answer: "B",
+          },
+          {
+            question: "Which animal hibernates in winter?",
+            options: ["A. Bear", "B. Deer", "C. Fox", "D. Wolf"],
+            answer: "A",
+          },
+          {
+            question: "What’s the largest desert in the world?",
+            options: ["A. Sahara", "B. Gobi", "C. Antarctic", "D. Arabian"],
+            answer: "C",
+          },
+          {
+            question: "Which flower is associated with the Netherlands?",
+            options: ["A. Rose", "B. Tulip", "C. Daisy", "D. Sunflower"],
+            answer: "B",
+          },
+          {
+            question: "What’s the tallest animal on Earth?",
+            options: ["A. Elephant", "B. Giraffe", "C. Ostrich", "D. Camel"],
+            answer: "B",
+          },
+        ],
+        fashion: [
+          {
+            question: "Which designer is known for the 'little black dress'?",
+            options: ["A. Chanel", "B. Dior", "C. Versace", "D. Gucci"],
+            answer: "A",
+          },
+          {
+            question: "What’s a common accessory worn on the head?",
+            options: ["A. Necklace", "B. Hat", "C. Bracelet", "D. Ring"],
+            answer: "B",
+          },
+          {
+            question: "Which fabric is associated with denim?",
+            options: ["A. Cotton", "B. Silk", "C. Wool", "D. Polyester"],
+            answer: "A",
+          },
+          {
+            question: "What’s the name of a long, flowing garment?",
+            options: ["A. T-shirt", "B. Gown", "C. Shorts", "D. Jacket"],
+            answer: "B",
+          },
+          {
+            question: "Which color is a classic in men’s suits?",
+            options: ["A. Pink", "B. Navy", "C. Yellow", "D. Orange"],
+            answer: "B",
+          },
+          {
+            question: "What’s a popular shoe style with a high heel?",
+            options: ["A. Sneaker", "B. Stiletto", "C. Sandal", "D. Boot"],
+            answer: "B",
+          },
+          {
+            question: "Which designer created the interlocking GG logo?",
+            options: ["A. Gucci", "B. Prada", "C. Louis Vuitton", "D. Hermès"],
+            answer: "A",
+          },
+          {
+            question: "What’s worn around the neck for warmth?",
+            options: ["A. Scarf", "B. Belt", "C. Gloves", "D. Socks"],
+            answer: "A",
+          },
+          {
+            question: "Which fashion era featured flapper dresses?",
+            options: ["A. 1920s", "B. 1950s", "C. 1970s", "D. 1990s"],
+            answer: "A",
+          },
+          {
+            question: "What’s a common material for luxury bags?",
+            options: ["A. Plastic", "B. Leather", "C. Canvas", "D. Nylon"],
+            answer: "B",
+          },
+        ],
+        math: [
+          {
+            question: "What is 5 + 7?",
+            options: ["A. 12", "B. 10", "C. 14", "D. 11"],
+            answer: "A",
+          },
+          {
+            question: "What’s the square root of 16?",
+            options: ["A. 2", "B. 4", "C. 6", "D. 8"],
+            answer: "B",
+          },
+          {
+            question: "What is 9 × 3?",
+            options: ["A. 24", "B. 27", "C. 18", "D. 30"],
+            answer: "B",
+          },
+          {
+            question: "What’s 50% of 200?",
+            options: ["A. 50", "B. 100", "C. 150", "D. 75"],
+            answer: "B",
+          },
+          {
+            question: "What’s the value of π (pi) rounded to two decimals?",
+            options: ["A. 3.14", "B. 3.12", "C. 3.16", "D. 3.10"],
+            answer: "A",
+          },
+          {
+            question: "What is 15 – 8?",
+            options: ["A. 5", "B. 6", "C. 7", "D. 8"],
+            answer: "C",
+          },
+          {
+            question: "What’s 2 raised to the power of 3?",
+            options: ["A. 6", "B. 8", "C. 4", "D. 10"],
+            answer: "B",
+          },
+          {
+            question: "What’s the perimeter of a square with a side of 5?",
+            options: ["A. 15", "B. 20", "C. 25", "D. 10"],
+            answer: "B",
+          },
+          {
+            question: "What is 100 ÷ 4?",
+            options: ["A. 20", "B. 25", "C. 30", "D. 15"],
+            answer: "B",
+          },
+          {
+            question: "What’s the next number in the sequence: 2, 4, 6, 8…?",
+            options: ["A. 10", "B. 12", "C. 14", "D. 9"],
+            answer: "A",
+          },
+        ],
+        jokes: [
+          {
+            question: "Why don’t skeletons fight each other?",
+            options: [
+              "A. They’re too brittle",
+              "B. They don’t have the guts",
+              "C. They’re bone-tired",
+              "D. They’d break up",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What do you call fake spaghetti?",
+            options: [
+              "A. An impasta",
+              "B. A noodle knockoff",
+              "C. A pasta poser",
+              "D. A sham-aroni",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Why did the tomato turn red?",
+            options: [
+              "A. It was embarrassed",
+              "B. It saw the salad dressing",
+              "C. It got sunburned",
+              "D. It blushed at the onion",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What’s a vampire’s favorite fruit?",
+            options: [
+              "A. Apple",
+              "B. Blood orange",
+              "C. Grape",
+              "D. Fang-tastic pear",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Why don’t eggs tell jokes?",
+            options: [
+              "A. They’d crack up",
+              "B. They’re too chicken",
+              "C. They’re hard-boiled",
+              "D. They’d scramble the punchline",
+            ],
+            answer: "B",
+          },
+          {
+            question: "What do you call a bear with no teeth?",
+            options: [
+              "A. A gummy bear",
+              "B. A toothless teddy",
+              "C. A gumdrop",
+              "D. A honey bear",
+            ],
+            answer: "A",
+          },
+          {
+            question: "Why did the golfer bring two pairs of pants?",
+            options: [
+              "A. In case he got a hole in one",
+              "B. In case he got a birdie",
+              "C. In case he got a bogey",
+              "D. In case he got a par",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What do you call a pile of cats?",
+            options: [
+              "A. A meowtain",
+              "B. A purr-amid",
+              "C. A fur-nado",
+              "D. A whisker stack",
+            ],
+            answer: "B",
+          },
+          {
+            question: "Why did the scarecrow win an award?",
+            options: [
+              "A. He was outstanding in his field",
+              "B. He was straw-some",
+              "C. He was corny",
+              "D. He was a-maize-ing",
+            ],
+            answer: "A",
+          },
+          {
+            question: "What do you call a fish wearing a crown?",
+            options: [
+              "A. Kingfish",
+              "B. Crownfish",
+              "C. Royal fish",
+              "D. Monarch fish",
+            ],
+            answer: "A",
+          },
+        ],
+      };
+
+      const quinnComments = {
+        correct: [
+          "Brilliant! You’ve outwitted the mists!",
+          "A wizard’s mind at work!",
+          "You’re sparkling like my glimmerdust!",
+        ],
+        wrong: [
+          "Oops, the mists tricked you!",
+          "Even I couldn’t hex that one right!",
+          "A valiant try, but the stars say no.",
+        ],
+      };
+      const lunaComments = {
+        correct: [
+          "Moonlit genius shines through!",
+          "You’ve brewed a perfect answer!",
+          "The stars align for you!",
+        ],
+        wrong: [
+          "A potion gone awry, dear!",
+          "The moon’s not pleased with that one!",
+          "A misstep in the mist!",
+        ],
+      };
+
+      let quinnState = {
+        currentQuestion: null,
+        timer: null,
+        timeLeft: 15,
+        usedQuestions: [],
+      };
+      let lunaState = {
+        currentQuestion: null,
+        timer: null,
+        timeLeft: 15,
+        usedQuestions: [],
+      };
+      let quinnScore = localStorage.getItem("quinnScore")
+        ? parseInt(localStorage.getItem("quinnScore"))
+        : 0;
+      let lunaScore = localStorage.getItem("lunaScore")
+        ? parseInt(localStorage.getItem("lunaScore"))
+        : 0;
+      const totalQuestions = Object.values(questions).reduce(
+        (sum, genre) => sum + genre.length,
+        0
+      );
+
+      function getRandomQuestion(state) {
+        if (state.usedQuestions.length === totalQuestions)
+          state.usedQuestions = [];
+        const genres = Object.keys(questions);
+        let question;
+        do {
+          const genre = genres[Math.floor(Math.random() * genres.length)];
+          const qList = questions[genre].filter(
+            (q) => !state.usedQuestions.includes(q.question)
+          );
+          if (qList.length > 0)
+            question = qList[Math.floor(Math.random() * qList.length)];
+        } while (!question);
+        state.usedQuestions.push(question.question);
+        return question;
+      }
+
+      function updateLeaderboard() {
+        document.getElementById("quinn-score").textContent = quinnScore;
+        document.getElementById("luna-score").textContent = lunaScore;
+        const quinnProgress = (quinnScore / totalQuestions) * 100;
+        const lunaProgress = (lunaScore / totalQuestions) * 100;
+        document.getElementById(
+          "quinn-progress"
+        ).style.width = `${quinnProgress}%`;
+        document.getElementById(
+          "luna-progress"
+        ).style.width = `${lunaProgress}%`;
+        localStorage.setItem("quinnScore", quinnScore);
+        localStorage.setItem("lunaScore", lunaScore);
+      }
+
+      function fadeElement(elementId, callback) {
+        const element = document.getElementById(elementId);
+        element.style.opacity = "0";
+        setTimeout(() => {
+          if (callback) callback();
+          element.style.opacity = "1";
+        }, 500);
+      }
+
+      function startTimer(player) {
+        const state = player === "Quinn" ? quinnState : lunaState;
+        state.timeLeft = 15;
+        document.getElementById("timer").textContent = state.timeLeft;
+        document.getElementById("timer").classList.remove("warning");
+        clearInterval(state.timer);
+        state.timer = setInterval(() => {
+          state.timeLeft--;
+          document.getElementById("timer").textContent = state.timeLeft;
+          if (state.timeLeft <= 5)
+            document.getElementById("timer").classList.add("warning");
+          if (state.timeLeft <= 0) {
+            clearInterval(state.timer);
+            nextQuestion(player);
+          }
+        }, 1000);
+      }
+
+      function nextQuestion(player) {
+        const state = player === "Quinn" ? quinnState : lunaState;
+        state.currentQuestion = getRandomQuestion(state);
+        fadeElement("quiz-question", () => {
+          document.getElementById("quiz-question").textContent =
+            state.currentQuestion.question;
+          const options = document.querySelectorAll(".quiz-option");
+          options.forEach((btn, i) => {
+            btn.textContent = state.currentQuestion.options[i];
+            btn.classList.remove("correct", "wrong");
+            btn.disabled = false;
+          });
+          document.getElementById("character-comment").textContent = "";
+          startTimer(player);
+        });
+      }
+
+      function checkAnswer(player, choice, btn) {
+        const state = player === "Quinn" ? quinnState : lunaState;
+        clearInterval(state.timer);
+        const isCorrect = choice === state.currentQuestion.answer;
+        const comments = player === "Quinn" ? quinnComments : lunaComments;
+        const comment =
+          comments[isCorrect ? "correct" : "wrong"][
+            Math.floor(Math.random() * 3)
+          ];
+
+        fadeElement("character-comment", () => {
+          document.getElementById(
+            "character-comment"
+          ).textContent = `${player}: ${comment}`;
+          btn.classList.add(isCorrect ? "correct" : "wrong");
+          if (isCorrect) {
+            if (player === "Quinn") quinnScore++;
+            else lunaScore++;
+            updateLeaderboard();
+          }
+          document
+            .querySelectorAll(".quiz-option")
+            .forEach((b) => (b.disabled = true));
+          setTimeout(() => nextQuestion(player), 1500);
+        });
+      }
+
+      function startGame(player) {
+        const container = document.getElementById("quiz-container");
+        container.innerHTML = `
+              <div id="timer">15</div>
+              <div id="character-comment"></div>
+              <div id="quiz-question"></div>
+              <button class="quiz-option" data-choice="A"></button>
+              <button class="quiz-option" data-choice="B"></button>
+              <button class="quiz-option" data-choice="C"></button>
+              <button class="quiz-option" data-choice="D"></button>
+              <button class="button" id="leave-game">Leave Game</button>
+              <div id="leaderboard">
+                  <div class="leaderboard-item">
+                      <span>Quinn’s Score: <span id="quinn-score">${quinnScore}</span></span>
+                      <div class="progress-bar"><div class="progress-fill" id="quinn-progress" style="width: ${
+                        (quinnScore / totalQuestions) * 100
+                      }%"></div></div>
+                  </div>
+                  <div class="leaderboard-item">
+                      <span>Luna’s Score: <span id="luna-score">${lunaScore}</span></span>
+                      <div class="progress-bar"><div class="progress-fill" id="luna-progress" style="width: ${
+                        (lunaScore / totalQuestions) * 100
+                      }%"></div></div>
+                  </div>
+              </div>
+          `;
+        nextQuestion(player);
+        document.querySelectorAll(".quiz-option").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const choice = btn.getAttribute("data-choice");
+            checkAnswer(player, choice, btn);
+          });
+        });
+        document.getElementById("leave-game").addEventListener("click", () => {
+          const state = player === "Quinn" ? quinnState : lunaState;
+          clearInterval(state.timer);
+          container.innerHTML = `
+                  <button class="button" onclick="startGame('Quinn')">Play as Quinn</button>
+                  <button class="button" onclick="startGame('Luna')">Play as Luna</button>
+                  <div id="leaderboard">
+                      <div class="leaderboard-item">
+                          <span>Quinn’s Score: <span id="quinn-score">${quinnScore}</span></span>
+                          <div class="progress-bar"><div class="progress-fill" id="quinn-progress" style="width: ${
+                            (quinnScore / totalQuestions) * 100
+                          }%"></div></div>
+                      </div>
+                      <div class="leaderboard-item">
+                          <span>Luna’s Score: <span id="luna-score">${lunaScore}</span></span>
+                          <div class="progress-bar"><div class="progress-fill" id="luna-progress" style="width: ${
+                            (lunaScore / totalQuestions) * 100
+                          }%"></div></div>
+                      </div>
+                  </div>
+              `;
+        });
+      }
+
+      // Initial state
+      document.getElementById("quiz-container").innerHTML = `
+          <button class="button" onclick="startGame('Quinn')">Play as Quinn</button>
+          <button class="button" onclick="startGame('Luna')">Play as Luna</button>
+          <div id="leaderboard">
+              <div class="leaderboard-item">
+                  <span>Quinn’s Score: <span id="quinn-score">${quinnScore}</span></span>
+                  <div class="progress-bar"><div class="progress-fill" id="quinn-progress" style="width: ${
+                    (quinnScore / totalQuestions) * 100
+                  }%"></div></div>
+              </div>
+              <div class="leaderboard-item">
+                  <span>Luna’s Score: <span id="luna-score">${lunaScore}</span></span>
+                  <div class="progress-bar"><div class="progress-fill" id="luna-progress" style="width: ${
+                    (lunaScore / totalQuestions) * 100
+                  }%"></div></div>
+              </div>
+          </div>
+      `;
+    </script>
+  </body>
+</html>
