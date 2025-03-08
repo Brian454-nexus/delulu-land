@@ -198,6 +198,73 @@
         margin-bottom: 10px;
         font-size: clamp(16px, 4vw, 20px);
       }
+      /* Fade-out animation for current cards */
+      .fade-out {
+        animation: fadeOut 0.3s ease forwards;
+      }
+
+      /* Float-in animation for new cards */
+      .float-in {
+        animation: floatIn 0.5s ease forwards;
+        animation-delay: 0.3s; /* Start after fade-out */
+        opacity: 0; /* Start hidden until animation kicks in */
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+
+      @keyframes floatIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px); /* Drift up from below */
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Pagination styling */
+      .pagination {
+        text-align: center;
+        margin-top: 1.25rem;
+      }
+
+      .pagination button {
+        padding: 0.75rem 1.5rem;
+        margin: 0 0.5rem;
+        background: transparent;
+        border: 2px solid #ffdd57;
+        color: #ffdd57;
+        border-radius: 30px;
+        font-family: "Cinzel", serif;
+        font-size: clamp(12px, 2.5vw, 16px);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .pagination button:hover:not(:disabled) {
+        background: #ffdd57;
+        color: #1a0b2e;
+        box-shadow: 0 0 15px #ffdd57;
+      }
+
+      .pagination button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .pagination span {
+        color: #d4c4ff;
+        font-size: clamp(14px, 2.5vw, 18px);
+        margin: 0 1rem;
+      }
       .spell-form,
       .tale-form {
         text-align: center;
@@ -434,10 +501,10 @@
     <section id="about">
       <h2>Our Coven</h2>
       <p>
-        We are Quinn and Luna, two souls bound by mischief and magic. I, Quinn,
-        wield the staff of whimsy, while Luna brews potions of wonder. Together,
-        we dance through a realm where stars whisper secrets and the moon hums
-        lullabies.
+        This is Quinn and Luna, two besties bound by delulu and magic. Quinn,
+        wields the staff of whimsy, while Luna brews potions of wonder.
+        Together, we dance through a realm where stars whisper secrets and the
+        moon hums lullabies.
       </p>
     </section>
 
@@ -497,7 +564,7 @@
     <section id="quiz">
       <h2>Mystic Quiz</h2>
       <p>
-        Face the infinite trials of Quinn and Luna—answer in 10 seconds, or the
+        Face the infinite trials of Quinn and Luna—answer in 20 seconds, or the
         mists claim your score!
       </p>
       <div id="quiz-container">
@@ -543,77 +610,121 @@
     </section>
 
     <script>
-      // Scroll animation
-      const sections = document.querySelectorAll("section");
-      window.addEventListener("scroll", () => {
-        sections.forEach((section) => {
-          const rect = section.getBoundingClientRect();
-          if (rect.top < window.innerHeight - 100) {
-            section.style.opacity = "1";
-            section.style.transform = "translateY(0)";
-          } else {
-            section.style.opacity = "0";
-            section.style.transform = "translateY(50px)";
-          }
-        });
-      });
-      sections.forEach((section) => {
-        section.style.transition = "all 0.5s";
-        section.style.opacity = "0";
-        section.style.transform = "translateY(50px)";
-      });
+      // Display spells with pagination and animation
+      function displaySpells(page = 1, perPage = 10) {
+        const spells = JSON.parse(localStorage.getItem("spells")) || [];
+        const container = document.querySelector("#spells .card-container");
+        const start = (page - 1) * perPage;
+        const end = start + perPage;
+        const spellSlice = spells.slice(start, end);
 
-      // Mist sparkle
-      const mist = document.querySelector(".mist");
-      setInterval(() => {
-        mist.style.backgroundPosition = `${Math.random() * 100}px ${
-          Math.random() * 100
-        }px`;
-      }, 2000);
+        // Fade out current cards
+        container.classList.add("fade-out");
+        setTimeout(() => {
+          container.innerHTML = ""; // Clear after fade-out
+          spellSlice.forEach((spell) => {
+            const newCard = document.createElement("div");
+            newCard.className = "card float-in";
+            newCard.innerHTML = `<h3>${spell.name}</h3><p>${spell.desc}</p>`;
+            container.appendChild(newCard);
+          });
+          container.classList.remove("fade-out");
+          updatePagination("spells", page, Math.ceil(spells.length / perPage));
+        }, 300); // Match CSS animation duration
+      }
 
-      // Spell submission
+      // Display tales with pagination and animation
+      function displayTales(page = 1, perPage = 10) {
+        const tales = JSON.parse(localStorage.getItem("tales")) || [];
+        const container = document.querySelector("#tales .card-container");
+        const start = (page - 1) * perPage;
+        const end = start + perPage;
+        const taleSlice = tales.slice(start, end);
+
+        container.classList.add("fade-out");
+        setTimeout(() => {
+          container.innerHTML = "";
+          taleSlice.forEach((tale) => {
+            const newCard = document.createElement("div");
+            newCard.className = "card float-in";
+            newCard.innerHTML = `<h3>${tale.title}</h3><p>${tale.text}</p>`;
+            container.appendChild(newCard);
+          });
+          container.classList.remove("fade-out");
+          const totalPages = Math.ceil(tales.length / perPage) || 1; // Ensure at least 1 page
+          updatePagination("tales", page, totalPages);
+        }, 300);
+      }
+
+      // Update pagination controls
+      function updatePagination(section, currentPage, totalPages) {
+        let pagination = document.querySelector(`#${section} .pagination`);
+        if (!pagination) {
+          pagination = document.createElement("div");
+          pagination.className = "pagination";
+          document.querySelector(`#${section}`).appendChild(pagination);
+        }
+        pagination.innerHTML = `
+        <button onclick="${
+          section === "spells" ? "displaySpells" : "displayTales"
+        }(${currentPage - 1})" ${
+          currentPage === 1 ? "disabled" : ""
+        }>Previous</button>
+        <span>Page ${currentPage} of ${totalPages || 1}</span>
+        <button onclick="${
+          section === "spells" ? "displaySpells" : "displayTales"
+        }(${currentPage + 1})" ${
+          currentPage === totalPages ? "disabled" : ""
+        }>Next</button>
+    `;
+      }
+
+      // Updated addSpell with pagination refresh
       function addSpell() {
         const name = document.getElementById("spellName").value;
         const desc = document.getElementById("spellDesc").value;
         if (name && desc) {
-          const container = document.querySelector("#spells .card-container");
-          const newCard = document.createElement("div");
-          newCard.className = "card";
-          newCard.innerHTML = `<h3>${name}</h3><p>${desc}</p>`;
-          container.appendChild(newCard);
+          let spells = JSON.parse(localStorage.getItem("spells")) || [];
+          spells.push({ name, desc });
+          localStorage.setItem("spells", JSON.stringify(spells));
+          displaySpells(1); // Refresh to page 1
           document.getElementById("spellName").value = "";
           document.getElementById("spellDesc").value = "";
         }
       }
 
-      // Tale submission
+      // Updated addTale with pagination refresh
       function addTale() {
         const title = document.getElementById("taleTitle").value;
         const text = document.getElementById("taleText").value;
         if (title && text) {
-          const container = document.querySelector("#tales .card-container");
-          const newCard = document.createElement("div");
-          newCard.className = "card";
-          newCard.innerHTML = `<h3>${title}</h3><p>${text}</p>`;
-          container.appendChild(newCard);
+          let tales = JSON.parse(localStorage.getItem("tales")) || [];
+          tales.push({ title, text });
+          localStorage.setItem("tales", JSON.stringify(tales));
+          displayTales(1); // Refresh to page 1
           document.getElementById("taleTitle").value = "";
           document.getElementById("taleText").value = "";
         }
       }
 
+      // Load initial pages on page load
+      window.addEventListener("load", () => {
+        displaySpells(1);
+        displayTales(1);
+      });
       // Mood switcher
       function changeMood(mood) {
         const banner = document.querySelector(".banner");
         if (mood === "starry") {
           banner.style.backgroundImage =
             "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url('https://i.pinimg.com/736x/2f/d7/16/2fd716b1c34beded5c5c7e9189e51e3c.jpg')";
-            banner.style.backgroundSize = "100%"; 
-            banner.style.backgroundPosition = "center 20%";
+          banner.style.backgroundSize = "100%";
+          banner.style.backgroundPosition = "center 20%";
         } else if (mood === "misty") {
           banner.style.backgroundImage =
             "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url('https://i.pinimg.com/736x/4e/7e/a6/4e7ea6b2cd750ae2ed20a6bb46876603.jpg')";
-            banner.style.backgroundSize = "95%"; 
-        banner.style.backgroundPosition = "center 20%";
+          banner.style.backgroundSize = "95%";
+          banner.style.backgroundPosition = "center 20%";
         }
       }
 
@@ -2524,21 +2635,17 @@
       let quinnState = {
         currentQuestion: null,
         timer: null,
-        timeLeft: 15,
+        timeLeft: 20,
         usedQuestions: [],
       };
       let lunaState = {
         currentQuestion: null,
         timer: null,
-        timeLeft: 15,
+        timeLeft: 20,
         usedQuestions: [],
       };
-      let quinnScore = localStorage.getItem("quinnScore")
-        ? parseInt(localStorage.getItem("quinnScore"))
-        : 0;
-      let lunaScore = localStorage.getItem("lunaScore")
-        ? parseInt(localStorage.getItem("lunaScore"))
-        : 0;
+      let quinnScore = parseInt(localStorage.getItem("quinnScore")) || 0;
+      let lunaScore = parseInt(localStorage.getItem("lunaScore")) || 0;
       const totalQuestions = Object.values(questions).reduce(
         (sum, genre) => sum + genre.length,
         0
@@ -2587,7 +2694,7 @@
 
       function startTimer(player) {
         const state = player === "Quinn" ? quinnState : lunaState;
-        state.timeLeft = 15;
+        state.timeLeft = 20;
         document.getElementById("timer").textContent = state.timeLeft;
         document.getElementById("timer").classList.remove("warning");
         clearInterval(state.timer);
@@ -2636,8 +2743,9 @@
           ).textContent = `${player}: ${comment}`;
           btn.classList.add(isCorrect ? "correct" : "wrong");
           if (isCorrect) {
-            if (player === "Quinn") quinnScore++;
-            else lunaScore++;
+            if (player === "Quinn")
+              quinnScore += 5; // Changed to increment by 5
+            else lunaScore += 5; // Changed to increment by 5
             updateLeaderboard();
           }
           document
@@ -2650,7 +2758,7 @@
       function startGame(player) {
         const container = document.getElementById("quiz-container");
         container.innerHTML = `
-              <div id="timer">15</div>
+              <div id="timer">20</div>
               <div id="character-comment"></div>
               <div id="quiz-question"></div>
               <button class="quiz-option" data-choice="A"></button>
